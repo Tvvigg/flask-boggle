@@ -20,7 +20,7 @@ class FlaskTests(TestCase):
             self.assertIn('board', session)
             self.assertIsNone(session.get('highscore'))
             self.assertIsNone(session.get('nplays'))
-            self.assertIn(b'<p>High Score:', response.data)
+            self.assertIn(b'High Score:', response.data)
             self.assertIn(b'Score:', response.data)
             self.assertIn(b'Seconds Left:', response.data)
 
@@ -44,7 +44,7 @@ class FlaskTests(TestCase):
         response = self.client.get('/check-word?word=impossible')
         self.assertEqual(response.json['result'], 'not-on-board')
 
-    def non_english_word(self):
+    def test_non_english_word(self):
         """Test if word is on the board"""
 
         self.client.get('/')
