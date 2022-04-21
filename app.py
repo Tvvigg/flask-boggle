@@ -1,8 +1,12 @@
 from flask import Flask, request, render_template, jsonify, session
 from boggle import Boggle
+import secrets
+
+"""Make secret key."""
+secret_key = secrets.token_hex(16)
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "fdfgkjtjkkg45yfdb"
+app.config["SECRET_KEY"] = secret_key
 
 boggle_game = Boggle()
 
